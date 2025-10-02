@@ -44,7 +44,12 @@ function addInteractions() {
             this.style.transform = 'translateY(0) scale(1)';
         });
 
-        block.addEventListener('click', function () {
+        block.addEventListener('click', function (e) {
+            // Don't interfere with link clicks
+            if (e.target.tagName === 'A' || e.target.closest('a')) {
+                return;
+            }
+
             this.style.transform = 'translateY(-8px) scale(1.02)';
             setTimeout(() => {
                 this.style.transform = 'translateY(0) scale(1)';
